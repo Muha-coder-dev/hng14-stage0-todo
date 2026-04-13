@@ -1,8 +1,10 @@
 
 # HNG 14 Stage 0 - Todo Card
 A clean, responsive, and accessible Todo Card built for Stage 0 of the HNG 14 Internship. 
+
 ![Github Link]([https://github.com/Muha-coder-dev/hng14-stage0-todo])
-![Live Demo (Github pages)]([https://muha-coder-dev.github.io/hng14-stage0-todo/])
+
+![Github pages Link]([https://muha-coder-dev.github.io/hng14-stage0-todo/])
 
 ## Overview
 This is a straightforward task card component built with standard web technologies. The main goal was to meet the strict automated testing requirements while making sure the code is semantic and accessible. I went with a bold, high-contrast design so the interface is easy to read and stands out.
