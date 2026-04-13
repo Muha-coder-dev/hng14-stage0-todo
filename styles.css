@@ -1,0 +1,185 @@
+/* 1. Global Reset & Theme Variables */
+:root {
+    --bg-color: #f0f0f0; /* Muted background to make the card pop */
+    --card-bg: #ffffff;
+    --black: #000000;
+    --high-priority: #ff5c5c;
+    --accent: #bc95ff; /* A nice "Frontend Wizard" purple */
+    --border-width: 3px;
+    --shadow-offset: 6px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 2. The Main Card (Neubrutalist Style) */
+.todo-card {
+    background: var(--card-bg);
+    border: var(--border-width) solid var(--black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--black);
+    width: 100%;
+    max-width: 450px; /* Tablet/Desktop constraint from brief */
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.2s ease;
+}
+
+/* 3. Header Styling */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge {
+    border: 2px solid var(--black);
+    padding: 4px 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    background: var(--high-priority);
+}
+
+.status-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-text {
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* Custom Neubrutalist Checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--black);
+    background: white;
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="checkbox"]:checked {
+    background: #00ff00; /* Neon green for Done */
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-weight: bold;
+}
+
+/* 4. Body Styling */
+.todo-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+/* Interaction: Strike-through logic for JS later */
+.todo-card.completed .todo-title {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.todo-description {
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.date-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.due-date { color: #555; }
+.time-remaining { color: var(--high-priority); }
+
+/* 5. Footer: Tags & Buttons */
+.card-footer {
+    border-top: 2px solid var(--black);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap; /* Required: Tags should wrap nicely */
+    gap: 8px;
+    list-style: none;
+}
+
+.tag {
+    background: var(--accent);
+    border: 1px solid var(--black);
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.actions-group {
+    display: flex;
+    gap: 12px;
+}
+
+/* Button Styling */
+.btn {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid var(--black);
+    font-weight: 800;
+    cursor: pointer;
+    background: white;
+    box-shadow: 3px 3px 0px var(--black);
+    transition: all 0.1s;
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--black);
+}
+
+.btn-delete:hover { background: var(--high-priority); }
+.btn-edit:hover { background: #5ce1ff; }
+
+/* 6. Responsiveness (Mobile First) */
+@media (max-width: 480px) {
+    .todo-card {
+        max-width: 100%; /* Full width on mobile */
+        margin: 0;
+    }
+    
+    .actions-group {
+        flex-direction: column; /* Stacked buttons on small screens */
+    }
+}
